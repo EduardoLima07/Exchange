@@ -1,0 +1,211 @@
+﻿<Window x:Class="CurrencyExchange.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:CurrencyExchange"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="745" WindowStyle="None" MouseDown="Window_MouseDown" Loaded="Window_Loaded" ResizeMode="NoResize">
+    <Grid Background="White">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="35"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <Label Grid.Row="0" 
+               Content="Currency Converter" 
+               HorizontalAlignment="Left" 
+               Margin="30,2"
+               FontSize="15"/>
+        <Image Grid.Row="0" 
+               Source="Img/close.png" 
+               Width="20" Height="20" 
+               Margin="0,2,10,0" 
+               HorizontalAlignment="Right"
+               MouseDown="CloseWindow"/>
+        <Image Grid.Row="0" 
+               Source="Img/minimize.png" 
+               Width="20" Height="20" 
+               Margin="0,2,40,0" 
+               HorizontalAlignment="Right"
+               MouseDown="MinimizeWindow"/>
+        <Border Grid.Row="1" 
+                Margin="30,20" 
+                Background="White" 
+                CornerRadius="10" 
+                BorderThickness="1"
+                BorderBrush="Black">
+            <Border.Effect>
+                <DropShadowEffect 
+                    ShadowDepth="1" 
+                    Opacity="10"/>
+            </Border.Effect>
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="auto"/>
+                    <ColumnDefinition Width="auto"/>
+                </Grid.ColumnDefinitions>
+                <Grid Grid.Row="0" Grid.Column="0">
+                    <StackPanel Orientation="Horizontal">
+                        <Label 
+                            x:Name="lblValorTitulo"
+                            Content="1" 
+                            FontSize="15" 
+                            Foreground="Gray"
+                            Margin="10,10,0,0"/>
+                        <Label 
+                            x:Name="lblCodeTitulo" 
+                            Content="USD" 
+                            FontSize="15" 
+                            Foreground="Gray"
+                            Margin="-5,10"/>
+                        <Label 
+                            Content="equivalent to" 
+                            FontSize="15" 
+                            Foreground="Gray"
+                            Margin="2,10"/>
+                    </StackPanel>
+                </Grid>
+                <Grid Grid.Row="1" Grid.Column="0">
+                    <StackPanel Orientation="Horizontal">
+                        <Label 
+                            x:Name="lblValorResultado" 
+                            Content="0,977" 
+                            FontSize="35" 
+                            Margin="10,5"/>
+                        <Label 
+                            x:Name="lblCodeValorResultado" 
+                            Content="CHF" 
+                            FontSize="35" 
+                            Margin="-4,5"/>
+                    </StackPanel>
+                </Grid>
+                <Grid Grid.Row="2" Grid.Column="0">
+                    <StackPanel Orientation="Horizontal">
+                        <Label
+                            x:Name="lblLocalTime" 
+                            Content="13/02, 19:14 UTC" 
+                            FontSize="10" 
+                            Margin="10,5"/>
+                    </StackPanel>
+                </Grid>
+                <Grid Grid.Row="3" Grid.Column="0">
+                    <StackPanel Orientation="Horizontal">
+                        <Border Height="40" 
+                                Width="150"  
+                                CornerRadius="10" 
+                                BorderThickness="1"
+                                BorderBrush="Black"
+                                Margin="10,10">
+                            <TextBox 
+                                x:Name="txtValor1" 
+                                Width="130" 
+                                Height="30"
+                                FontSize="18"
+                                BorderThickness="0"/>
+                        </Border>
+                        <ComboBox 
+                                x:Name="cmbxCurrency1"
+                                SelectedIndex="0"
+                                Background="Transparent" 
+                                Margin="10,0"
+                                Width="149" 
+                                Height="39" 
+                                BorderThickness="0" 
+                                BorderBrush="White"/>
+                    </StackPanel>
+                </Grid>
+                <Grid Grid.Row="4" Grid.Column="0">
+                    <StackPanel Orientation="Horizontal">
+                        <Border Height="40" 
+                                Width="150"  
+                                CornerRadius="10" 
+                                BorderThickness="1"
+                                BorderBrush="Black"
+                                Margin="10,10">
+                            <TextBox 
+                                x:Name="txtValue2"
+                                Width="130" 
+                                Height="30"
+                                FontSize="18"
+                                BorderThickness="0"
+                                IsEnabled="False"/>
+                        </Border>
+                        <ComboBox 
+                                x:Name="cmbxCurrency2"
+                                SelectedIndex="4"
+                                Background="Transparent" 
+                                Margin="10,0"
+                                Width="149" 
+                                Height="39" 
+                                BorderThickness="0" 
+                                BorderBrush="White"/>
+                    </StackPanel>
+                </Grid>
+                <Grid Grid.Row="5" Grid.Column="0">
+                    <StackPanel Orientation="Horizontal">
+                        <Button 
+                            Content="Convert" 
+                            Margin="10,10"
+                            Width="320" 
+                            Height="30"
+                            Click="Converter"
+                            BorderThickness="0"
+                            Background="WhiteSmoke">
+                            <Button.Effect>
+                                <DropShadowEffect 
+                                    ShadowDepth="1" 
+                                    Opacity="10"/>      
+                            </Button.Effect>
+                        </Button>
+                    </StackPanel>
+                </Grid>
+                <Grid Grid.Row="6" Grid.Column="0">
+                    <StackPanel Orientation="Horizontal">
+                        <Label 
+                            VerticalAlignment="Bottom"
+                            Content="Currency data provided by the ExchangeRate-API."
+                            FontSize="10"/>
+                    </StackPanel>
+                </Grid>
+                <Grid Grid.Row="0" Grid.Column="1" Grid.RowSpan="7">
+                    <StackPanel Width="320" Orientation="Vertical">
+                        <Label 
+                            Content="Feed" 
+                            Margin="0,0,0,5"
+                            Width="100"
+                            HorizontalAlignment="Center"
+                            FontSize="25" 
+                            Foreground="Gray"/>
+                        <StackPanel Orientation="Horizontal" Width="300">
+                            <DataGrid x:Name="dgConversions"
+                                      CanUserAddRows="False" 
+                                      AutoGenerateColumns="False"
+                                      Height="300"
+                                      Width="300"
+                                      CanUserResizeColumns="False" 
+                                      Background="White" 
+                                      IsReadOnly="True">
+                                <DataGrid.Columns>
+                                    <DataGridTextColumn Header="Value" Width="60"  Binding="{Binding Value1}" />
+                                    <DataGridTextColumn Header="Currency" Width="60"  Binding="{Binding Currency1}" />
+                                    <DataGridTextColumn Header="Rate" Width="60"  Binding="{Binding Rate}" />
+                                    <DataGridTextColumn Header="Value" Width="60"  Binding="{Binding Value2}" />
+                                    <DataGridTextColumn Header="Currency" Width="60"  Binding="{Binding Currency2}" />
+                                </DataGrid.Columns>
+                            </DataGrid>
+                        </StackPanel>
+                    </StackPanel>
+                </Grid>
+            </Grid>
+        </Border>
+    </Grid>
+</Window>
